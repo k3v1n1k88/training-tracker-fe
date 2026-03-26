@@ -1,19 +1,29 @@
 # ---- Builder ----
 FROM node:20-alpine AS builder
 
+ARG VITE_API_BASE_URL
+ARG VITE_BASE_PATH
+
 WORKDIR /build
 
 COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
+RUN cp .env.${ENVIRONMENT} .env 2>/dev/null || true
 RUN npm run build
 
-# ---- Asset holder ----
-# Minimal image that holds built assets for nginx volume sharing
-FROM alpine:3.20
+# ---- Production ----
+FROM node:20-alpine
 
-COPY --from=builder /build/dist /app/dist
+ENV NODE_ENV=${ENVIRONMENT}
+WORKDIR /app
 
-# Copy built assets to shared volume, then stay alive
-CMD ["sh", "-c", "cp -r /app/dist/* /serve/ && echo 'Assets copied to /serve/' && tail -f /dev/null"]
+RUN npm install -g serve
+
+COPY --from=builder /build/dist ./dist
+
+USER node
+EXPOSE 3000
+
+CMD ["serve", "-s", "dist", "-l", "3000"]
