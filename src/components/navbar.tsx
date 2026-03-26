@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../hooks/use-auth'
+import { BASE_URL } from '../services/api-client'
 import logoSrc from '../assets/logo-vnggames.png'
 import styles from './navbar.module.css'
 
@@ -91,7 +92,7 @@ export default function Navbar() {
             )}
           </div>
         ) : (
-          <a href="/api/auth/login" className={styles.loginBtn}>
+          <a href={`${BASE_URL}/auth/login`} className={styles.loginBtn}>
             Sign in
           </a>
         )}

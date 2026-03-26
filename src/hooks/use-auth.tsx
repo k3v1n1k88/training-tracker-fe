@@ -1,7 +1,7 @@
 /** Auth context — lazy auth that only fetches user when needed. */
 
 import { createContext, useCallback, useContext, useRef, useState, type ReactNode } from 'react'
-import { get } from '../services/api-client'
+import { get, BASE_URL } from '../services/api-client'
 
 interface User {
   id: number
@@ -54,7 +54,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
+      await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', credentials: 'include' })
     } finally {
       setUser(null)
       checked.current = false

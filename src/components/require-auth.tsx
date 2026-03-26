@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/use-auth'
+import { BASE_URL } from '../services/api-client'
 
 interface Props {
   children: React.ReactNode
@@ -23,7 +24,7 @@ export default function RequireAuth({ children, admin }: Props) {
 
   if (!user) {
     // Redirect to CAS SSO login
-    window.location.href = '/api/auth/login'
+    window.location.href = `${BASE_URL}/auth/login`
     return null
   }
 
