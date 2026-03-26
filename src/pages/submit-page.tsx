@@ -1,9 +1,10 @@
 /** Submit page — auth banner, tab switcher, file upload / URL input, verify flow, success overlay. */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/use-auth'
+import { get } from '../services/api-client'
 import FileUploadZone from '../components/file-upload-zone'
 import UrlInputValidator from '../components/url-input-validator'
 import VerifyFlowAnimation from '../components/verify-flow-animation'
@@ -22,6 +23,16 @@ export default function SubmitPage() {
   const navigate = useNavigate()
   const { user } = useAuth()
 
+  const [existingSub, setExistingSub] = useState<any>(null)
+  const [loadingSub, setLoadingSub] = useState(true)
+
+  useEffect(() => {
+    get('/submissions/my')
+      .then(setExistingSub)
+      .catch(() => {})
+      .finally(() => setLoadingSub(false))
+  }, [])
+
   const [tab, setTab] = useState<Tab>('file')
   const [course, setCourse] = useState(COURSES[0].value)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -29,8 +40,13 @@ export default function SubmitPage() {
   const [urlValid, setUrlValid] = useState(false)
   const [verifying, setVerifying] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [forceResubmit, setForceResubmit] = useState(false)
 
-  const canSubmit = tab === 'file' ? selectedFile !== null : urlValid
+  const courseHasSubmission = !forceResubmit
+    && existingSub
+    && ['pending', 'done'].includes(existingSub.status)
+    && existingSub.course === course
+  const canSubmit = !courseHasSubmission && (tab === 'file' ? selectedFile !== null : urlValid)
 
   function handleUrlChange(url: string, valid: boolean) {
     setCertUrl(url)
@@ -95,33 +111,59 @@ export default function SubmitPage() {
               </select>
             </div>
 
-            {/* Tab switcher */}
-            <div className={styles.tabSwitcher}>
-              <button
-                className={`${styles.tabBtn} ${tab === 'file' ? styles.active : ''}`}
-                onClick={() => setTab('file')}
-              >
-                📁 {t('tab_file')}
-              </button>
-              <button
-                className={`${styles.tabBtn} ${tab === 'url' ? styles.active : ''}`}
-                onClick={() => setTab('url')}
-              >
-                🔗 {t('tab_url')}
-              </button>
-            </div>
+            {/* Active submission warning for selected course */}
+            {!loadingSub && courseHasSubmission && (
+              <div className={styles.courseSubmissionWarning}>
+                <span>{existingSub.status === 'pending' ? '⏳' : '✅'}</span>
+                <div className={styles.courseSubmissionWarningBody}>
+                  <div>
+                    <strong>{t(existingSub.status === 'pending' ? 'submission_status_pending' : 'submission_status_done')}</strong>
+                    <p>{existingSub.course} · {t('submission_submitted_at', {
+                      date: new Date(existingSub.submitted_at).toLocaleDateString()
+                    })}</p>
+                  </div>
+                  {existingSub.status === 'done' && (
+                    <button
+                      className={styles.resubmitBtn}
+                      onClick={() => setForceResubmit(true)}
+                    >
+                      {t('btn_resubmit')}
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
 
-            {/* Panels */}
-            {tab === 'file' ? (
-              <FileUploadZone
-                selectedFile={selectedFile}
-                onFileSelect={setSelectedFile}
-              />
-            ) : (
-              <UrlInputValidator
-                value={certUrl}
-                onChange={handleUrlChange}
-              />
+            {/* Tab switcher + panels — hidden when course has active submission */}
+            {!courseHasSubmission && (
+              <>
+                <div className={styles.tabSwitcher}>
+                  <button
+                    className={`${styles.tabBtn} ${tab === 'file' ? styles.active : ''}`}
+                    onClick={() => setTab('file')}
+                  >
+                    📁 {t('tab_file')}
+                  </button>
+                  <button
+                    className={`${styles.tabBtn} ${tab === 'url' ? styles.active : ''}`}
+                    onClick={() => setTab('url')}
+                  >
+                    🔗 {t('tab_url')}
+                  </button>
+                </div>
+
+                {tab === 'file' ? (
+                  <FileUploadZone
+                    selectedFile={selectedFile}
+                    onFileSelect={setSelectedFile}
+                  />
+                ) : (
+                  <UrlInputValidator
+                    value={certUrl}
+                    onChange={handleUrlChange}
+                  />
+                )}
+              </>
             )}
 
             {/* Actions */}

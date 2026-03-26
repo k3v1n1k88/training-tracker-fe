@@ -55,6 +55,58 @@
   margin: 0;
 }
 
+/* Active submission warning — below course selector */
+.courseSubmissionWarning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(217, 119, 6, 0.06);
+  border: 1px solid rgba(217, 119, 6, 0.18);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.courseSubmissionWarning strong {
+  display: block;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.courseSubmissionWarning p {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 2px 0 0;
+}
+
+.courseSubmissionWarningBody {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.resubmitBtn {
+  background: none;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.resubmitBtn:hover {
+  background: rgba(217, 119, 6, 0.1);
+}
+
 /* Course selector */
 .courseSelector {
   margin-bottom: 16px;
