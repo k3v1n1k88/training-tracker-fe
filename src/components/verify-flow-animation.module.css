@@ -1,0 +1,170 @@
+/* Verify flow animation styles — scanning, success, failed states */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.stateTitle {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.stateSub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* Scan box */
+.scanBox {
+  background: #f4f6f9;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 36px 32px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.scanIcon {
+  font-size: 48px;
+  margin-bottom: 14px;
+}
+
+.scanLabel {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.scanFileName {
+  font-size: 12px;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.scanBarWrap {
+  width: 100%;
+  height: 4px;
+  background: #eef0f3;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 16px 0 10px;
+}
+
+.scanBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.scanChecks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.ck {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.ckDot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
+}
+
+/* dot states */
+.dp { background: var(--slate); }
+.dc { background: var(--accent); animation: pulse 0.8s ease infinite; }
+.dok { background: var(--green); }
+.dfail { background: var(--red); }
+
+/* Result cards */
+.resultCard {
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.success {
+  background: rgba(5, 150, 105, 0.07);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+}
+
+.failed {
+  background: rgba(240, 90, 34, 0.07);
+  border: 1px solid rgba(240, 90, 34, 0.25);
+}
+
+.resultIcon {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+.resultTitle {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.resultSub {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.green { color: var(--green); }
+.redLight { color: var(--red-light); }
+
+/* Cert detail table */
+.certDetail {
+  background: #f4f6f9;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  text-align: left;
+}
+
+.certRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.certRow:last-child {
+  border-bottom: none;
+}
+
+.certKey {
+  color: var(--muted);
+}
+
+.certVal {
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+.ok { color: var(--green); }
+
+.actionRow {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}

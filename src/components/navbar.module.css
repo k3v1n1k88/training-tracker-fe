@@ -1,0 +1,85 @@
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 64px; background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo { height: 28px; width: auto; object-fit: contain; }
+.brandDivider {
+  width: 1px; height: 28px; background: rgba(0, 0, 0, 0.12); flex-shrink: 0;
+}
+.title { font-weight: 700; font-size: 15px; }
+.subtitle { font-size: 11px; color: var(--muted); }
+
+.right { display: flex; align-items: center; gap: 8px; }
+
+.langWrap { position: relative; }
+.langBtn {
+  background: #f4f6f9; border: 1px solid rgba(0, 0, 0, 0.1); color: #6b7280;
+  border-radius: 6px; padding: 3px 10px; font-size: 11px; font-weight: 700;
+  cursor: pointer; font-family: 'JetBrains Mono', monospace;
+}
+.langBtn:hover { border-color: rgba(240, 90, 34, 0.4); color: #111827; }
+.langMenu {
+  position: absolute; top: 100%; right: 0; margin-top: 4px;
+  background: #fff; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 8px;
+  overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); z-index: 10;
+}
+.langItem {
+  display: block; width: 100%; padding: 6px 16px; border: none;
+  background: transparent; font-size: 12px; font-weight: 600;
+  cursor: pointer; text-align: left;
+}
+.langItem:hover { background: #f4f6f9; }
+
+.profileWrap { position: relative; }
+.profileBtn {
+  display: flex; align-items: center; gap: 8px; cursor: pointer;
+  padding: 4px 8px; border-radius: 8px; border: none; background: transparent;
+  font-family: inherit;
+}
+.profileBtn:hover { background: #f4f6f9; }
+.avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: white;
+}
+.email { font-size: 13px; color: var(--muted-light); }
+.caret { font-size: 9px; color: var(--muted); }
+
+.profileMenu {
+  position: absolute; top: 100%; right: 0; margin-top: 4px;
+  background: #fff; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 12px;
+  min-width: 220px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden; z-index: 200;
+}
+.profileInfo { padding: 14px 16px; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+.profileName { font-size: 13px; font-weight: 600; color: #111827; }
+.profileEmail { font-size: 11px; color: #6b7280; font-family: 'JetBrains Mono', monospace; }
+.menuItem {
+  width: 100%; display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border: none; background: transparent;
+  color: #374151; font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: inherit; text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.menuItem:hover { background: #f4f6f9; }
+
+.logoutBtn {
+  width: 100%; display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border: none; background: transparent;
+  color: var(--red-light); font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit; text-align: left;
+}
+.logoutBtn:hover { background: rgba(240, 90, 34, 0.1); }
+
+.loginBtn {
+  padding: 6px 16px; border-radius: 7px; font-size: 13px; font-weight: 600;
+  background: var(--red); color: white; text-decoration: none;
+  transition: opacity 0.2s;
+}
+.loginBtn:hover { opacity: 0.85; }

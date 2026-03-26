@@ -1,0 +1,195 @@
+/* Submit page layout and component styles */
+
+.submitLayout {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.pageSub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+/* Auth banner */
+.authBanner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(5, 150, 105, 0.07);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.authIcon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: rgba(5, 150, 105, 0.15);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.authTextVerified {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 1px;
+}
+
+.authTextEmail {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Course selector */
+.courseSelector {
+  margin-bottom: 16px;
+}
+
+.courseSelectorLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-light);
+  margin-bottom: 6px;
+}
+
+.courseSelect {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--navy-mid);
+  color: var(--white);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.courseSelect:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+/* Tab switcher */
+.tabSwitcher {
+  display: flex;
+  gap: 4px;
+  background: var(--navy-light);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.tabBtn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 7px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--muted);
+}
+
+.tabBtn.active {
+  background: var(--red);
+  color: white;
+}
+
+/* URL panel */
+.urlPanel {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.urlLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted-light);
+  margin-bottom: 10px;
+}
+
+.urlHint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.urlValidMsg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  margin-top: 10px;
+}
+
+.urlInvalidMsg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--red-light);
+  margin-top: 10px;
+}
+
+.urlQuickLinks {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.urlQuickLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 5px 10px;
+  transition: color 0.15s;
+}
+
+.urlQuickLink:hover {
+  color: var(--white);
+}
+
+/* Action row */
+.actionRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+  gap: 10px;
+}
+
+/* Submit button disabled state */
+.submitBtnDisabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}

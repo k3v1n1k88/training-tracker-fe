@@ -1,0 +1,19 @@
+:root {
+  /* VNG Games Brand Colors */
+  --red: #f05a22;
+  --red-dark: #d2501e;
+  --red-light: #ff6b1a;
+  --accent: #fac30a;
+
+  /* Light backgrounds */
+  --navy: #f4f6f9;
+  --navy-mid: #ffffff;
+  --navy-light: #eef0f3;
+  --slate: #d1d5db;
+  --muted: #6b7280;
+  --muted-light: #9ca3af;
+  --white: #111827;
+  --green: #059669;
+  --orange: #d97706;
+  --border: rgba(0, 0, 0, 0.08);
+}

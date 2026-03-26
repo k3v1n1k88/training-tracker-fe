@@ -1,0 +1,83 @@
+/* Course card styles */
+
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  border-color: rgba(240, 90, 34, 0.4);
+  transform: translateY(-2px);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--accent), transparent);
+}
+
+.courseNum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--red);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.courseName {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.courseDesc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.courseMeta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.courseTag {
+  font-size: 11px;
+  color: var(--muted-light);
+  font-weight: 500;
+}
+
+.courseLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(240, 90, 34, 0.1);
+  border: 1px solid rgba(240, 90, 34, 0.25);
+  color: var(--red-light);
+  border-radius: 7px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.courseLinkBtn:hover {
+  background: rgba(240, 90, 34, 0.2);
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.git/
+.claude/
+plans/
+docs/
+*.md
+Dockerfile
+.dockerignore
+tsconfig.tsbuildinfo
