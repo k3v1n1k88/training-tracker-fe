@@ -155,5 +155,9 @@
   "auth_error_domain": "Only @vng.com.vn accounts are allowed.",
   "auth_error_generic": "An error occurred during sign-in. Please try again.",
   "btn_close": "Close",
-  "btn_try_again": "Try Again"
+  "btn_try_again": "Try Again",
+  "submission_status_pending": "Your certificate is being reviewed",
+  "submission_status_done": "Your certificate has been approved",
+  "submission_status_rejected": "Your certificate was rejected",
+  "submission_submitted_at": "Submitted {{date}}"
 }

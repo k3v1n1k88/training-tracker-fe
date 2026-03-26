@@ -155,5 +155,9 @@
   "auth_error_domain": "Chỉ tài khoản @vng.com.vn được phép đăng nhập.",
   "auth_error_generic": "Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại.",
   "btn_close": "Đóng",
-  "btn_try_again": "Thử lại"
+  "btn_try_again": "Thử lại",
+  "submission_status_pending": "Chứng chỉ của bạn đang được xem xét",
+  "submission_status_done": "Chứng chỉ của bạn đã được phê duyệt",
+  "submission_status_rejected": "Chứng chỉ của bạn đã bị từ chối",
+  "submission_submitted_at": "Đã nộp {{date}}"
 }
