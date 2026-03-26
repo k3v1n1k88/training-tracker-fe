@@ -149,5 +149,11 @@
   "cert_error_label": "Lỗi phát hiện",
   "cert_hint_label": "Gợi ý",
   "btn_resubmit": "Nộp lại",
-  "verify_analyzing": "Đang phân tích chứng chỉ"
+  "verify_analyzing": "Đang phân tích chứng chỉ",
+  "auth_error_title": "Lỗi đăng nhập",
+  "auth_error_failed": "Xác thực thất bại. Vui lòng thử lại.",
+  "auth_error_domain": "Chỉ tài khoản @vng.com.vn được phép đăng nhập.",
+  "auth_error_generic": "Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại.",
+  "btn_close": "Đóng",
+  "btn_try_again": "Thử lại"
 }

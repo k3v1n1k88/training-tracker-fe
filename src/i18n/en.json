@@ -149,5 +149,11 @@
   "cert_error_label": "Error detected",
   "cert_hint_label": "Suggestion",
   "btn_resubmit": "Re-submit",
-  "verify_analyzing": "Analyzing certificate"
+  "verify_analyzing": "Analyzing certificate",
+  "auth_error_title": "Sign-in Error",
+  "auth_error_failed": "Authentication failed. Please try again.",
+  "auth_error_domain": "Only @vng.com.vn accounts are allowed.",
+  "auth_error_generic": "An error occurred during sign-in. Please try again.",
+  "btn_close": "Close",
+  "btn_try_again": "Try Again"
 }
