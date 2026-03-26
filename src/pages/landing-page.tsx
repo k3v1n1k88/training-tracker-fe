@@ -1,7 +1,10 @@
 /** Landing page — hero, course grid, step guide sidebar. */
 
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
+import { useAuth } from '../hooks/use-auth'
+import { get } from '../services/api-client'
 import HeroSection from '../components/hero-section'
 import CourseCard from '../components/course-card'
 import StepGuideSidebar from '../components/step-guide-sidebar'
@@ -27,8 +30,15 @@ const COURSES = [
 
 export default function LandingPage() {
   const { t } = useTranslation()
+  const { user } = useAuth()
   const [searchParams, setSearchParams] = useSearchParams()
   const authError = searchParams.get('error')
+  const [submission, setSubmission] = useState<any>(null)
+
+  useEffect(() => {
+    if (!user) return
+    get('/submissions/my').then(setSubmission).catch(() => {})
+  }, [user])
 
   const dismissError = () => {
     searchParams.delete('error')
@@ -55,6 +65,7 @@ export default function LandingPage() {
               descKey={course.descKey}
               durKey={course.durKey}
               href={course.href}
+              submission={submission?.course === course.name ? submission : null}
             />
           ))}
         </div>
