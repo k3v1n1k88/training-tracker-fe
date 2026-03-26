@@ -1,9 +1,11 @@
 /** Landing page — hero, course grid, step guide sidebar. */
 
 import { useTranslation } from 'react-i18next'
+import { useSearchParams } from 'react-router-dom'
 import HeroSection from '../components/hero-section'
 import CourseCard from '../components/course-card'
 import StepGuideSidebar from '../components/step-guide-sidebar'
+import AuthErrorDialog from '../components/auth-error-dialog'
 import styles from './landing-page.module.css'
 
 const COURSES = [
@@ -25,10 +27,18 @@ const COURSES = [
 
 export default function LandingPage() {
   const { t } = useTranslation()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const authError = searchParams.get('error')
+
+  const dismissError = () => {
+    searchParams.delete('error')
+    setSearchParams(searchParams, { replace: true })
+  }
 
   return (
     <div className={styles.landingLayout}>
       <div className={styles.landingMain}>
+        {authError && <AuthErrorDialog error={authError} onDismiss={dismissError} />}
         <HeroSection />
 
         <div className={styles.sectionLabel}>
