@@ -10,7 +10,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-RUN cp .env.${ENVIRONMENT} .env 2>/dev/null || true
+# RUN cp .env.${ENVIRONMENT} .env 2>/dev/null || true
 RUN npm run build
 
 # ---- Production ----
