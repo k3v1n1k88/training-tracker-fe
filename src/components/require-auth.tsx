@@ -1,4 +1,4 @@
-/** Route guard — redirects to SSO login if user not authenticated. */
+/** Route guard — redirects to IAM OIDC login if user not authenticated. */
 
 import { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/use-auth'
@@ -23,7 +23,7 @@ export default function RequireAuth({ children, admin }: Props) {
   }
 
   if (!user) {
-    // Redirect to CAS SSO login
+    // Redirect to IAM OIDC login
     window.location.href = `${BASE_URL}/auth/login`
     return null
   }

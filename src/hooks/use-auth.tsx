@@ -54,12 +54,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     try {
-      await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', credentials: 'include' })
-    } finally {
+      const res = await fetch(`${BASE_URL}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      })
+      const data = await res.json()
       setUser(null)
       checked.current = false
-      window.location.href = '/'
+      // Backend returns Keycloak logout URL for SSO signout
+      if (data.logout_url) {
+        window.location.href = data.logout_url
+        return
+      }
+    } catch {
+      setUser(null)
+      checked.current = false
     }
+    window.location.href = '/'
   }
 
   return (
