@@ -6,6 +6,7 @@ import { get, del } from '../../services/api-client'
 import { useToast } from '../../hooks/use-toast'
 import styles from '../../pages/admin-page.module.css'
 import UserModal from './user-modal'
+import ImportModal from './import-modal'
 import Spinner from '../ui/spinner'
 import EmptyState from '../ui/empty-state'
 import { STATUS_BADGE, STATUS_KEY } from '../../constants'
@@ -14,7 +15,9 @@ interface StaffUser {
   id: number
   name: string
   email: string
+  employee_id: string | null
   department: string
+  direct_boss: string | null
   role: string | null
   country: string
   joined_at: string | null
@@ -28,7 +31,8 @@ export default function StaffPanel() {
   const [users, setUsers] = useState<StaffUser[]>([])
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
-  const [modal, setModal] = useState<{ mode: 'add' | 'edit'; user?: Partial<{ id: number; name: string; email: string; department: string; role: string; country: string }> } | null>(null)
+  const [modal, setModal] = useState<{ mode: 'add' | 'edit'; user?: Partial<{ id: number; name: string; email: string; employee_id: string; department: string; direct_boss: string; role: string; country: string }> } | null>(null)
+  const [showImport, setShowImport] = useState(false)
 
   const load = () => {
     setLoading(true)
@@ -75,6 +79,9 @@ export default function StaffPanel() {
             onChange={(e) => setSearch(e.target.value)}
             style={{ width: 170 }}
           />
+          <button className="btn-secondary sm" onClick={() => setShowImport(true)}>
+            📥 {t('btn_import')}
+          </button>
           <button className="btn-primary sm" onClick={() => setModal({ mode: 'add' })}>
             ＋ {t('btn_add_staff')}
           </button>
@@ -95,6 +102,7 @@ export default function StaffPanel() {
                 <tr>
                   <th>{t('th_staff')}</th>
                   <th>{t('th_dept')}</th>
+                  <th>{t('th_direct_boss')}</th>
                   <th>{t('th_role')}</th>
                   <th>{t('th_country')}</th>
                   <th>{t('th_joined')}</th>
@@ -110,12 +118,13 @@ export default function StaffPanel() {
                       <div className="tdm">{u.email}</div>
                     </td>
                     <td style={{ color: 'var(--muted-light)', fontSize: 12 }}>{u.department}</td>
+                    <td style={{ fontSize: 11, color: 'var(--muted)' }}>{u.direct_boss || '—'}</td>
                     <td style={{ fontSize: 11, color: 'var(--muted)' }}>{u.role || '—'}</td>
                     <td style={{ fontSize: 11, color: 'var(--muted)' }}>{u.country}</td>
                     <td className="tdm">{u.joined_at ? u.joined_at.slice(0, 10) : '—'}</td>
                     <td><span className={STATUS_BADGE[u.status]}>{t(STATUS_KEY[u.status])}</span></td>
                     <td style={{ display: 'flex', gap: 4, flexWrap: 'wrap', padding: '8px 14px' }}>
-                      <button className="btn-ghost" onClick={() => setModal({ mode: 'edit', user: { ...u, role: u.role ?? undefined } })}>✏️</button>
+                      <button className="btn-ghost" onClick={() => setModal({ mode: 'edit', user: { ...u, role: u.role ?? undefined, direct_boss: u.direct_boss ?? undefined, employee_id: u.employee_id ?? undefined } })}>✏️</button>
                       <button className="btn-danger" onClick={() => handleDelete(u.id, u.name)}>🗑</button>
                     </td>
                   </tr>
@@ -135,6 +144,13 @@ export default function StaffPanel() {
           initial={modal.user}
           onClose={() => setModal(null)}
           onSaved={handleSaved}
+        />
+      )}
+
+      {showImport && (
+        <ImportModal
+          onClose={() => setShowImport(false)}
+          onImported={() => { setShowImport(false); load() }}
         />
       )}
     </div>
