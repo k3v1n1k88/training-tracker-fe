@@ -12,6 +12,7 @@ export interface Filters {
   dept: string
   course: string
   country: string
+  direct_boss: string
   from: string
   to: string
 }
@@ -28,7 +29,7 @@ export default function FilterBar({ filters, onChange, onClear }: Props) {
 
   const set = (patch: Partial<Filters>) => onChange({ ...filters, ...patch })
 
-  const activeCount = [filters.dept, filters.course, filters.country, filters.from, filters.to]
+  const activeCount = [filters.dept, filters.course, filters.country, filters.direct_boss, filters.from, filters.to]
     .filter(Boolean).length
 
   const pills: { key: StatusFilter; label: string }[] = [
@@ -55,7 +56,7 @@ export default function FilterBar({ filters, onChange, onClear }: Props) {
         </div>
         <input
           className="filter-search"
-          placeholder={`🔍 ${t('th_staff')}...`}
+          placeholder={`🔍 ${t('filter_search_placeholder')}`}
           value={filters.search}
           onChange={(e) => set({ search: e.target.value })}
           style={{ marginLeft: 'auto' }}
@@ -85,6 +86,17 @@ export default function FilterBar({ filters, onChange, onClear }: Props) {
           <option value="">All</option>
           {COUNTRIES.map((c) => <option key={c}>{c}</option>)}
         </select>
+
+        <div className="adv-divider" />
+
+        <label className="adv-filter-label">{t('filter_direct_boss')}</label>
+        <input
+          className="adv-select"
+          placeholder={t('filter_direct_boss_placeholder')}
+          value={filters.direct_boss}
+          onChange={(e) => set({ direct_boss: e.target.value })}
+          style={{ minWidth: 120 }}
+        />
 
         <div className="adv-divider" />
 

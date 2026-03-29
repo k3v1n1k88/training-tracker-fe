@@ -9,7 +9,9 @@ export interface UserRow {
   id: number
   name: string
   email: string
+  employee_id?: string | null
   department: string
+  direct_boss?: string | null
   country: string
   course: string
   submitted_at: string | null
