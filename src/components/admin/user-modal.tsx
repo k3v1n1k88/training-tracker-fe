@@ -10,7 +10,9 @@ export interface UserPayload {
   id?: number
   name: string
   email: string
+  employee_id: string
   department: string
+  direct_boss: string
   role: string
   country: string
 }
@@ -28,7 +30,9 @@ export default function UserModal({ mode, initial, onClose, onSaved }: Props) {
   const [form, setForm] = useState<UserPayload>({
     name: initial?.name ?? '',
     email: initial?.email ?? '',
+    employee_id: initial?.employee_id ?? '',
     department: initial?.department ?? 'Engineering',
+    direct_boss: initial?.direct_boss ?? '',
     role: initial?.role ?? '',
     country: initial?.country ?? 'VN',
   })
@@ -85,10 +89,18 @@ export default function UserModal({ mode, initial, onClose, onSaved }: Props) {
         <input className="fi" value={form.email} onChange={(e) => set({ email: e.target.value })} placeholder="vana@vnggames.com" />
       </div>
       <div className="form-row">
+        <label className="fl">{t('um_employee_id')}</label>
+        <input className="fi" value={form.employee_id} onChange={(e) => set({ employee_id: e.target.value })} placeholder="VG-21148" />
+      </div>
+      <div className="form-row">
         <label className="fl">{t('um_dept')}</label>
         <select className="fi" value={form.department} onChange={(e) => set({ department: e.target.value })}>
           {DEPARTMENTS.map((d) => <option key={d}>{d}</option>)}
         </select>
+      </div>
+      <div className="form-row">
+        <label className="fl">{t('um_direct_boss')}</label>
+        <input className="fi" value={form.direct_boss} onChange={(e) => set({ direct_boss: e.target.value })} placeholder="camvtd" />
       </div>
       <div className="form-row">
         <label className="fl">{t('um_role')}</label>
