@@ -15,8 +15,6 @@ type Tab = 'file' | 'url'
 
 const COURSES = [
   { value: 'What is Generative AI', labelKey: 'course_ai_essentials' },
-  { value: 'Google AI Essentials', labelKey: 'course_ai_essentials_legacy' },
-  { value: 'Foundations of Cybersecurity', labelKey: 'course_cybersecurity' },
 ]
 
 export default function SubmitPage() {
