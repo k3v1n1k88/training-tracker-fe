@@ -77,6 +77,9 @@
 }
 .logoutBtn:hover { background: rgba(240, 90, 34, 0.1); }
 
+.loginWrap { display: flex; align-items: center; gap: 10px; }
+.loginHint { font-size: 12px; color: var(--muted); }
+
 .loginBtn {
   padding: 6px 16px; border-radius: 7px; font-size: 13px; font-weight: 600;
   background: var(--red); color: white; text-decoration: none;

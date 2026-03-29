@@ -122,9 +122,100 @@
   margin-left: 6px;
 }
 
-/* Courses grid */
-.coursesGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+/* Course block (single course with learning outcomes) */
+.courseBlock {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  max-width: 600px;
 }
+
+.courseStatusBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status_done    { background: rgba(16, 185, 129, 0.12); color: #059669; }
+.status_pending { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+.status_rejected { background: rgba(239, 68, 68, 0.12); color: #dc2626; }
+
+.coursePlatformTag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0a66c2;
+  margin-bottom: 8px;
+}
+
+.courseBlockTitle {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.courseBlockDesc {
+  font-size: 14px;
+  color: var(--muted-light);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.courseOutcomes {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.courseOutcomeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.outcomeCheck {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(240, 90, 34, 0.1);
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.courseLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 20px;
+  border-radius: 8px;
+  background: var(--red);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.courseLinkBtn:hover { opacity: 0.85; }

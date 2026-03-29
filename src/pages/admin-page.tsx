@@ -36,6 +36,7 @@ const DEFAULT_FILTERS: Filters = {
   dept: '',
   course: '',
   country: '',
+  direct_boss: '',
   from: '',
   to: '',
 }
@@ -68,6 +69,7 @@ export default function AdminPage() {
     if (filters.dept) p.set('dept', filters.dept)
     if (filters.course) p.set('course', filters.course)
     if (filters.country) p.set('country', filters.country)
+    if (filters.direct_boss) p.set('direct_boss', filters.direct_boss)
     if (filters.from) p.set('from', filters.from)
     if (filters.to) p.set('to', filters.to)
     get<{ items: UserRow[]; total: number }>(`/users?${p}`)

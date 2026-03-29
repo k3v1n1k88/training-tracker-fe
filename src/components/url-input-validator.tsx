@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 import styles from '../pages/submit-page.module.css'
 
 const VALID_PATTERNS = [
+  'linkedin.com/learning/certificates/',
+  'linkedin.com/feed/update/',
   'coursera.org/verify/',
   'coursera.org/account/accomplishments/',
   'grow.google/',
@@ -47,7 +49,7 @@ export default function UrlInputValidator({ value, onChange }: UrlInputValidator
       <input
         className="fi"
         type="url"
-        placeholder="https://coursera.org/verify/... or https://grow.google/..."
+        placeholder="https://linkedin.com/learning/certificates/... or https://coursera.org/verify/..."
         value={value}
         onChange={handleChange}
         style={{ fontSize: 13, padding: '11px 14px' }}
@@ -67,20 +69,12 @@ export default function UrlInputValidator({ value, onChange }: UrlInputValidator
 
       <div className={styles.urlQuickLinks}>
         <a
-          href="https://grow.google/intl/en_us/courses-and-tools/google-ai-essentials/"
+          href="https://www.linkedin.com/learning/what-is-generative-ai"
           target="_blank"
           rel="noreferrer"
           className={styles.urlQuickLink}
         >
-          🔗 Google AI Essentials
-        </a>
-        <a
-          href="https://www.coursera.org/learn/foundations-of-cybersecurity"
-          target="_blank"
-          rel="noreferrer"
-          className={styles.urlQuickLink}
-        >
-          🔗 Coursera Cybersecurity
+          🔗 What is Generative AI (LinkedIn Learning)
         </a>
       </div>
     </div>

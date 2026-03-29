@@ -1,4 +1,4 @@
-/** Drag-and-drop file upload area — accepts PDF, PNG, JPG up to 10MB. */
+/** Drag-and-drop file upload area — accepts PDF only (up to 10MB). */
 
 import { useRef, useState, type DragEvent, type ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -9,7 +9,7 @@ interface FileUploadZoneProps {
   selectedFile: File | null
 }
 
-const ACCEPTED_TYPES = ['application/pdf', 'image/png', 'image/jpeg']
+const ACCEPTED_TYPES = ['application/pdf']
 const MAX_BYTES = 10 * 1024 * 1024 // 10MB
 
 export default function FileUploadZone({ onFileSelect, selectedFile }: FileUploadZoneProps) {
@@ -20,12 +20,12 @@ export default function FileUploadZone({ onFileSelect, selectedFile }: FileUploa
 
   function validateAndSet(file: File) {
     if (!ACCEPTED_TYPES.includes(file.type)) {
-      setError('Only PDF, PNG, or JPG files are accepted.')
+      setError(t('upload_error_type'))
       onFileSelect(null)
       return
     }
     if (file.size > MAX_BYTES) {
-      setError('File exceeds 10MB limit.')
+      setError(t('upload_error_size'))
       onFileSelect(null)
       return
     }
@@ -85,7 +85,7 @@ export default function FileUploadZone({ onFileSelect, selectedFile }: FileUploa
         ref={inputRef}
         type="file"
         style={{ display: 'none' }}
-        accept=".pdf,.png,.jpg,.jpeg"
+        accept=".pdf"
         onChange={handleChange}
       />
     </>

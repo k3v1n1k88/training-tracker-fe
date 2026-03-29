@@ -20,13 +20,13 @@ interface Props {
   onSent: () => void
 }
 
-const DEFAULT_SUBJECT = '[Reminder] Complete your Google course before 30/04/2026'
+const DEFAULT_SUBJECT = '[Reminder] Complete your AI Mandatory Training before 15:00, 20/04/2026'
 const DEFAULT_BODY = `Dear Team,
 
-This is a reminder about the mandatory training program. Please complete 1 of the 2 Google courses and submit your certificate before 30/04/2026.
+This is a reminder about the AI Mandatory Training program. Please complete the "What is Generative AI" course on LinkedIn Learning and submit your certificate before 15:00, 20/04/2026.
 
 Best regards,
-HR VNG Games`
+HR VNGGames`
 
 export default function EmailReminderModal({ targetUser, missingCount = 0, onClose, onSent }: Props) {
   const { t } = useTranslation()

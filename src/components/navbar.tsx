@@ -38,10 +38,10 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className={styles.brand} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-        <img src={logoSrc} alt="VNG Games" className={styles.logo} />
+        <img src={logoSrc} alt="VNGGames" className={styles.logo} />
         <div className={styles.brandDivider} />
         <div>
-          <div className={styles.title}>Training Tracker</div>
+          <div className={styles.title}>VNGGames</div>
           <div className={styles.subtitle}>{t('nav_sub')}</div>
         </div>
       </div>
@@ -92,9 +92,12 @@ export default function Navbar() {
             )}
           </div>
         ) : (
-          <a href={`${BASE_URL}/auth/login`} className={styles.loginBtn}>
-            Sign in
-          </a>
+          <div className={styles.loginWrap}>
+            <span className={styles.loginHint}>{t('sign_in_to_continue')}</span>
+            <a href={`${BASE_URL}/auth/login`} className={styles.loginBtn}>
+              Sign in
+            </a>
+          </div>
         )}
       </div>
     </nav>
